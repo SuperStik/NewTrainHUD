@@ -5,7 +5,7 @@ local useHUD = CreateConVar("hud_usenewtrain", "1", FCVAR_ARCHIVE, "Use the new 
 hook.Add("HUDPaint", "DrawTrainHUD", function()
 	local train = LocalPlayer():GetNW2Int("iTrain")
 
-	if train > 0 then
+	if train > 0 and useHUD:GetBool() then
 		local mult = ScrH() / 480
 		local width = 42 * mult
 		local heightt = 8 * mult
