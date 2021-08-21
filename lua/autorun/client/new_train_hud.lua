@@ -56,5 +56,5 @@ hook.Add("HUDPaint", "DrawTrainHUD", function()
 end)
 
 hook.Add("HUDShouldDraw", "DisableTrainHUD", function(str)
-	if str == "CHudTrain" then return false end
+	if str == "CHudTrain" and useHUD:GetBool() then return false end
 end)
