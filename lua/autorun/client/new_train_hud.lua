@@ -3,9 +3,10 @@ local triangle = Material("gui/point.png", "smooth mips")
 local useHUD = CreateConVar("hud_usenewtrain", "1", FCVAR_ARCHIVE, "Use the new train HUD instead of the HL1 one.")
 
 hook.Add("HUDPaint", "DrawTrainHUD", function()
-	local train = LocalPlayer():GetNW2Int("iTrain")
+	local localply = LocalPlayer()
+	local train = localply:GetNW2Int("iTrain")
 
-	if train > 0 and useHUD:GetBool() then
+	if train > 0 and useHUD:GetBool() and not localply:InVehicle() then
 		local mult = ScrH() / 480
 		local width = 42 * mult
 		local heightt = 8 * mult
